@@ -34,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
             child: ListView(
               children: [
                 SizedBox(
-                  height: 137,
+                  height: 120,
                 ),
                 Center(
                   child: Text(
