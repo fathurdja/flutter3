@@ -24,7 +24,7 @@ class _DaftarPageState extends State<DaftarPage> {
           child: ListView(
             children: [
               SizedBox(
-                height: 128,
+                height: 100,
               ),
               Center(
                 child: Text(
