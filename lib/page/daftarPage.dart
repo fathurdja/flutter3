@@ -20,13 +20,13 @@ class _DaftarPageState extends State<DaftarPage> {
           height: 197,
         ),
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 43),
+          padding: const EdgeInsets.symmetric(horizontal: 43),
           child: ListView(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 100,
               ),
-              Center(
+              const Center(
                 child: Text(
                   "Selamat Bergabung !!",
                   style: TextStyle(
@@ -35,7 +35,7 @@ class _DaftarPageState extends State<DaftarPage> {
                       fontWeight: FontWeight.w600),
                 ),
               ),
-              Text(
+              const Text(
                 "Mari Persiapkan karir anda",
                 textAlign: TextAlign.center,
                 style: TextStyle(
@@ -43,66 +43,66 @@ class _DaftarPageState extends State<DaftarPage> {
                     fontWeight: FontWeight.w300,
                     fontSize: 16),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 76,
               ),
               TextField(
                 decoration: InputDecoration(
                     hintText: "nama lengkap ",
-                    contentPadding: EdgeInsets.all(10),
-                    hintStyle: TextStyle(
+                    contentPadding: const EdgeInsets.all(10),
+                    hintStyle: const TextStyle(
                         fontFamily: 'poppins',
                         fontSize: 15,
                         fontWeight: FontWeight.w400),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(40))),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               TextField(
                 decoration: InputDecoration(
                     hintText: "alamat email ",
-                    contentPadding: EdgeInsets.all(10),
-                    hintStyle: TextStyle(
+                    contentPadding: const EdgeInsets.all(10),
+                    hintStyle: const TextStyle(
                         fontFamily: 'poppins',
                         fontSize: 15,
                         fontWeight: FontWeight.w400),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(40))),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               TextField(
                 decoration: InputDecoration(
                     hintText: " password",
-                    contentPadding: EdgeInsets.all(10),
-                    hintStyle: TextStyle(
+                    contentPadding: const EdgeInsets.all(10),
+                    hintStyle: const TextStyle(
                         fontFamily: 'poppins',
                         fontSize: 15,
                         fontWeight: FontWeight.w400),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(40))),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               TextField(
                 decoration: InputDecoration(
                     hintText: "confirm password",
-                    contentPadding: EdgeInsets.all(10),
-                    hintStyle: TextStyle(
+                    contentPadding: const EdgeInsets.all(10),
+                    hintStyle: const TextStyle(
                         fontFamily: 'poppins',
                         fontSize: 15,
                         fontWeight: FontWeight.w400),
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(40))),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              Text(
+              const Text(
                 "lupa Password",
                 textAlign: TextAlign.center,
                 style: TextStyle(
@@ -111,26 +111,26 @@ class _DaftarPageState extends State<DaftarPage> {
                     fontWeight: FontWeight.w600,
                     color: Color(0xff672CBC)),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               ElevatedButton(
                 onPressed: () {},
-                child: Text(
+                child: const Text(
                   "Daftar",
                   style: TextStyle(
                       color: Colors.white, fontFamily: 'Poppins', fontSize: 20),
                 ),
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xff672CBC)),
+                    backgroundColor: const Color(0xff672CBC)),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
+                  const Text(
                     "Sudah Punya Akun??",
                     style: TextStyle(
                         fontSize: 16,
@@ -144,7 +144,7 @@ class _DaftarPageState extends State<DaftarPage> {
                           MaterialPageRoute(
                               builder: (context) => const LoginPage()));
                     },
-                    child: Text(
+                    child: const Text(
                       "Login",
                       style: TextStyle(
                           fontFamily: 'Poppins',

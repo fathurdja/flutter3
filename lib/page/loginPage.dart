@@ -33,10 +33,10 @@ class _LoginPageState extends State<LoginPage> {
             ),
             child: ListView(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 120,
                 ),
-                Center(
+                const Center(
                   child: Text(
                     "Selamat datang\nkembali!!",
                     textAlign: TextAlign.center,
@@ -51,21 +51,21 @@ class _LoginPageState extends State<LoginPage> {
                   width: 310,
                   height: 231,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 41,
                 ),
                 TextField(
                   decoration: InputDecoration(
                       hintText: "Alamat Email",
-                      contentPadding: EdgeInsets.all(14),
-                      hintStyle: TextStyle(
+                      contentPadding: const EdgeInsets.all(14),
+                      hintStyle: const TextStyle(
                           fontSize: 14,
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w400),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(40))),
                 ),
-                SizedBox(height: 23),
+                const SizedBox(height: 23),
                 TextField(
                   obscureText: ispasswordvisible,
                   decoration: InputDecoration(
@@ -78,42 +78,42 @@ class _LoginPageState extends State<LoginPage> {
                         },
                       ),
                       hintText: "Password",
-                      contentPadding: EdgeInsets.all(14),
-                      hintStyle: TextStyle(
+                      contentPadding: const EdgeInsets.all(14),
+                      hintStyle: const TextStyle(
                           fontSize: 14,
                           fontFamily: 'Poppins',
                           fontWeight: FontWeight.w400),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(40))),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
-                Text(
+                const Text(
                   "Lupa Password",
                   style: TextStyle(
                       fontSize: 16,
                       color: Color(0xff672CBC),
                       fontWeight: FontWeight.w600),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xff672CBC)),
+                        backgroundColor: const Color(0xff672CBC)),
                     onPressed: () {},
-                    child: Text(
+                    child: const Text(
                       "Login",
                       style: TextStyle(color: Colors.white),
                     )),
-                SizedBox(
+                const SizedBox(
                   height: 27,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
+                    const Text(
                       "Belum Punya Akun?",
                       style: TextStyle(
                           fontWeight: FontWeight.w400,
@@ -128,7 +128,7 @@ class _LoginPageState extends State<LoginPage> {
                               builder: (context) => const DaftarPage(),
                             ));
                       },
-                      child: Text(
+                      child: const Text(
                         "Daftar",
                         style: TextStyle(
                             fontFamily: 'Poppins',
@@ -139,7 +139,7 @@ class _LoginPageState extends State<LoginPage> {
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 80,
                 )
               ],
