@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_3/page/loginPage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+// ignore: must_be_immutable
 class DaftarPage extends StatelessWidget {
   DaftarPage({super.key, required this.prefs});
+  bool ispasswordvisible = true;
+
   final SharedPreferences prefs;
   void save() async {
     await prefs.setString("email", nameController.text);
@@ -14,6 +17,9 @@ class DaftarPage extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
+  void tombolPassVisibilty() {
+    setState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,16 +72,50 @@ class DaftarPage extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              textField(
-                tittle: "Password",
+              TextField(
                 controller: passwordController,
+                obscureText: ispasswordvisible,
+                decoration: InputDecoration(
+                    suffixIcon: IconButton(
+                      icon: Icon(ispasswordvisible
+                          ? Icons.visibility
+                          : Icons.visibility_off),
+                      onPressed: () {
+                        tombolPassVisibilty();
+                      },
+                    ),
+                    hintText: "Password",
+                    contentPadding: const EdgeInsets.all(14),
+                    hintStyle: const TextStyle(
+                        fontSize: 14,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w400),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(40))),
               ),
               const SizedBox(
                 height: 20,
               ),
-              textField(
-                tittle: "Confirm Password",
+              TextField(
                 controller: passwordController,
+                obscureText: ispasswordvisible,
+                decoration: InputDecoration(
+                    suffixIcon: IconButton(
+                      icon: Icon(ispasswordvisible
+                          ? Icons.visibility
+                          : Icons.visibility_off),
+                      onPressed: () {
+                        tombolPassVisibilty();
+                      },
+                    ),
+                    hintText: "Password",
+                    contentPadding: const EdgeInsets.all(14),
+                    hintStyle: const TextStyle(
+                        fontSize: 14,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w400),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(40))),
               ),
               const SizedBox(
                 height: 20,
@@ -148,6 +188,10 @@ class DaftarPage extends StatelessWidget {
         )
       ],
     ));
+  }
+
+  void setState() {
+    ispasswordvisible = !ispasswordvisible;
   }
 }
 
