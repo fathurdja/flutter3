@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_3/page/loginPage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class DaftarPage extends StatefulWidget {
-  const DaftarPage({super.key});
+class DaftarPage extends StatelessWidget {
+  DaftarPage({super.key, required this.prefs});
+  final SharedPreferences prefs;
+  void save() async {
+    await prefs.setString("email", nameController.text);
+    await prefs.setString("password", passwordController.text);
+    await prefs.setString("password", emailController.text);
+  }
 
-  @override
-  State<DaftarPage> createState() => _DaftarPageState();
-}
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
 
-class _DaftarPageState extends State<DaftarPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,58 +52,30 @@ class _DaftarPageState extends State<DaftarPage> {
               const SizedBox(
                 height: 76,
               ),
-              TextField(
-                decoration: InputDecoration(
-                    hintText: "nama lengkap ",
-                    contentPadding: const EdgeInsets.all(10),
-                    hintStyle: const TextStyle(
-                        fontFamily: 'poppins',
-                        fontSize: 15,
-                        fontWeight: FontWeight.w400),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(40))),
+              textField(
+                tittle: "nama Lengkap ",
+                controller: nameController,
               ),
               const SizedBox(
                 height: 20,
               ),
-              TextField(
-                decoration: InputDecoration(
-                    hintText: "alamat email ",
-                    contentPadding: const EdgeInsets.all(10),
-                    hintStyle: const TextStyle(
-                        fontFamily: 'poppins',
-                        fontSize: 15,
-                        fontWeight: FontWeight.w400),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(40))),
+              textField(
+                tittle: "alamat email",
+                controller: emailController,
               ),
               const SizedBox(
                 height: 20,
               ),
-              TextField(
-                decoration: InputDecoration(
-                    hintText: " password",
-                    contentPadding: const EdgeInsets.all(10),
-                    hintStyle: const TextStyle(
-                        fontFamily: 'poppins',
-                        fontSize: 15,
-                        fontWeight: FontWeight.w400),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(40))),
+              textField(
+                tittle: "Password",
+                controller: passwordController,
               ),
               const SizedBox(
                 height: 20,
               ),
-              TextField(
-                decoration: InputDecoration(
-                    hintText: "confirm password",
-                    contentPadding: const EdgeInsets.all(10),
-                    hintStyle: const TextStyle(
-                        fontFamily: 'poppins',
-                        fontSize: 15,
-                        fontWeight: FontWeight.w400),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(40))),
+              textField(
+                tittle: "Confirm Password",
+                controller: passwordController,
               ),
               const SizedBox(
                 height: 20,
@@ -115,14 +93,24 @@ class _DaftarPageState extends State<DaftarPage> {
                 height: 20,
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  if (emailController.text.isNotEmpty &&
+                      passwordController.text.isNotEmpty &&
+                      nameController.text.isNotEmpty) {
+                    Navigator.pushReplacementNamed(context, "/beranda");
+                    save();
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text("Semua field  harus diisi")));
+                  }
+                },
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xff672CBC)),
                 child: const Text(
                   "Daftar",
                   style: TextStyle(
                       color: Colors.white, fontFamily: 'Poppins', fontSize: 20),
                 ),
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xff672CBC)),
               ),
               const SizedBox(
                 height: 10,
@@ -160,5 +148,25 @@ class _DaftarPageState extends State<DaftarPage> {
         )
       ],
     ));
+  }
+}
+
+class textField extends StatelessWidget {
+  const textField({super.key, required this.tittle, required this.controller});
+
+  final String tittle;
+  final TextEditingController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: controller,
+      decoration: InputDecoration(
+          hintText: tittle,
+          contentPadding: const EdgeInsets.all(10),
+          hintStyle: const TextStyle(
+              fontFamily: 'poppins', fontSize: 15, fontWeight: FontWeight.w400),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(40))),
+    );
   }
 }

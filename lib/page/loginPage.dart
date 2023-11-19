@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'daftarPage.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -10,7 +9,8 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool ispasswordvisible = true;
-
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passController = TextEditingController();
   void tombolPassVisibilty() {
     setState(() {
       ispasswordvisible = !ispasswordvisible;
@@ -54,19 +54,13 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(
                   height: 41,
                 ),
-                TextField(
-                  decoration: InputDecoration(
-                      hintText: "Alamat Email",
-                      contentPadding: const EdgeInsets.all(14),
-                      hintStyle: const TextStyle(
-                          fontSize: 14,
-                          fontFamily: 'Poppins',
-                          fontWeight: FontWeight.w400),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(40))),
+                textField(
+                  controller: emailController,
+                  tittle: "alamat email",
                 ),
                 const SizedBox(height: 23),
                 TextField(
+                  controller: passController,
                   obscureText: ispasswordvisible,
                   decoration: InputDecoration(
                       suffixIcon: IconButton(
@@ -102,7 +96,16 @@ class _LoginPageState extends State<LoginPage> {
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xff672CBC)),
-                    onPressed: () {},
+                    onPressed: () {
+                      if (emailController.text.isNotEmpty &&
+                          passController.text.isNotEmpty) {
+                        Navigator.pushReplacementNamed(context, "/beranda");
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text("semua field harus di isi")));
+                      }
+                    },
                     child: const Text(
                       "Login",
                       style: TextStyle(color: Colors.white),
@@ -122,11 +125,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     InkWell(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const DaftarPage(),
-                            ));
+                        Navigator.pushReplacementNamed(context, "/daftar");
                       },
                       child: const Text(
                         "Daftar",
@@ -147,6 +146,25 @@ class _LoginPageState extends State<LoginPage> {
           )
         ],
       ),
+    );
+  }
+}
+
+class textField extends StatelessWidget {
+  const textField({super.key, required this.controller, required this.tittle});
+  final String tittle;
+  final TextEditingController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: controller,
+      decoration: InputDecoration(
+          hintText: tittle,
+          contentPadding: const EdgeInsets.all(14),
+          hintStyle: const TextStyle(
+              fontSize: 14, fontFamily: 'Poppins', fontWeight: FontWeight.w400),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(40))),
     );
   }
 }
