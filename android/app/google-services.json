@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "847300038501",
+    "project_id": "fathur-rizqi",
+    "storage_bucket": "fathur-rizqi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:847300038501:android:9650bdaccf6364d5f55b8c",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_3"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNs437ro-6U36PRWa4iVLHsSPYns_JL50"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -3,11 +3,18 @@ import 'package:flutter_application_3/page/beranda.dart';
 import 'package:flutter_application_3/page/daftarPage.dart';
 import 'package:flutter_application_3/page/loginPage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
 
 void main() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+);
   WidgetsFlutterBinding.ensureInitialized();
   final SharedPreferences prefs = await SharedPreferences.getInstance();
   runApp(MyApp(prefs: prefs));
+
 }
 
 class MyApp extends StatelessWidget {

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -11,6 +12,7 @@ class _LoginPageState extends State<LoginPage> {
   bool ispasswordvisible = true;
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passController = TextEditingController();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   void tombolPassVisibilty() {
     setState(() {
       ispasswordvisible = !ispasswordvisible;
@@ -96,9 +98,12 @@ class _LoginPageState extends State<LoginPage> {
                 ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xff672CBC)),
-                    onPressed: () {
+                    onPressed: () async {
                       if (emailController.text.isNotEmpty &&
                           passController.text.isNotEmpty) {
+                        await _auth.createUserWithEmailAndPassword(
+                            email: emailController.text,
+                            password: passController.text);
                         Navigator.pushReplacementNamed(context, "/beranda");
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
