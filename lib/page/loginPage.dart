@@ -104,6 +104,8 @@ class _LoginPageState extends State<LoginPage> {
                         await _auth.createUserWithEmailAndPassword(
                             email: emailController.text,
                             password: passController.text);
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text("Berhasil Login")));
                         Navigator.pushReplacementNamed(context, "/beranda");
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
